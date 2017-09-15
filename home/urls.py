@@ -5,4 +5,5 @@ from . import views
 app_name = 'home'
 urlpatterns = [
     url(r'^$', views.indexView, name='index'),
+    url(r'^secure/$', views.secureView, name='index_secure'),
 ]

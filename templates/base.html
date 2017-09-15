@@ -34,7 +34,15 @@
 	<div class="c-sub-header">
 		<div class="slds-grid">
 			<div class="slds-col"></div>
-			<div class="slds-col c-right">Welcome, </div>
+			<div class="slds-col c-right">
+				{% if user.is_authenticated %}
+					<p>Welcome {{ user.username }}</p>
+					<p><a href="/logout">Logout</a></p>
+				{% else %}
+					<p><a href="/auth/login">Login</a></p>
+					<p><a href="/auth/register">Register</a></p>
+				{% endif %}
+			</div>
 		</div>
 	</div>
 	<div class="c-content">
