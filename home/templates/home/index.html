@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+	<script src="{% static 'vue/vue.min.js' %}"></script>
+{% endblock %}
+{% block content %}
+	<h1>HOME</h1>
+
+	<div>
+		{% verbatim %}
+		<div id="app">
+			{{ message }}
+		</div>
+		{% endverbatim %}
+	</div>
+
+	<script>
+		jQuery(function() {
+			console.log('Doom!');
+			window.app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vue!'
+				}
+			});
+		});
+	</script>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+django-admin startproject e2cms
+
+update settings.py (DB, templates url, static url)
+
+python3 manage.py migrate
+
+python3 manage.py runserver
+
+python3 manage.py createsuperuser

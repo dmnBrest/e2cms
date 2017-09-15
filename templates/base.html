@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>{% block title %}E2 CMS{% endblock %}</title>
+	<script
+		src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous"></script>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'slds2_4_1/assets/styles/salesforce-lightning-design-system.css' %}">
+	<link rel="stylesheet" href="{% static 'global.css' %}">
+	{% block head %}{% endblock %}
+</head>
+<body>
+	<div id="header">
+		HEADER
+		<hr />
+	</div>
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div>
+    <div id="footer">
+		<hr />
+        {% block footer %}
+        &copy; Copyright 2017 by Dmitry Shnyrebv.
+        {% endblock %}
+    </div>
+</body>
+</html>
