@@ -9,21 +9,38 @@
 		src="https://code.jquery.com/jquery-3.2.1.min.js"
 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<script src="https://use.fontawesome.com/14ee000d5e.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500,700&amp;subset=cyrillic" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+
 	{% load static %}
 	<link rel="stylesheet" href="{% static 'slds2_4_1/assets/styles/salesforce-lightning-design-system.css' %}">
 	<link rel="stylesheet" href="{% static 'global.css' %}">
 	{% block head %}{% endblock %}
 </head>
 <body>
-	<div id="header">
-		HEADER
-		<hr />
+	<div class="c-header">
+		<div class="slds-grid">
+			<div class="slds-col">
+				<img src="{% static 'logo1.png' %}" alt="E2 CMS Logo" class="c-logo" />
+				<span class="c-site-title">E2 CMS</span>
+			</div>
+			<div class="slds-col">
+
+			</div>
+		</div>
 	</div>
-	<div id="content">
+	<div class="c-sub-header">
+		<div class="slds-grid">
+			<div class="slds-col"></div>
+			<div class="slds-col c-right">Welcome, </div>
+		</div>
+	</div>
+	<div class="c-content">
 		{% block content %}{% endblock %}
 	</div>
-    <div id="footer">
-		<hr />
+    <div class="c-footer">
         {% block footer %}
         &copy; Copyright 2017 by Dmitry Shnyrebv.
         {% endblock %}
