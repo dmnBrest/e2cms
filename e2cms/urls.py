@@ -21,8 +21,5 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('home.urls')),
-    # url(r'^auth/login/$', auth_views.LoginView.as_view(template_name='auth/login.html'), name='auth_login'),
-    # url(r'^auth/register/$', auth_views.RegisterView.as_view(template_name='auth/register.html'), name='auth_register'),
-    # url(r'^auth/logout/$', auth_views.LogoutView.as_view(template_name='auth/logout.html'), name='auth_logout'),
     url(r'^auth/', include('allauth.urls')),
 ]

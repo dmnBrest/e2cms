@@ -1,4 +1,4 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
 {% load account socialaccount %}
@@ -38,9 +38,8 @@
 		{% endif %}
 
 		<form class="login" method="POST" action="{% url 'account_login' %}" class="slds-form slds-form_stacked">
-			{% csrf_token %}
 
-			{% comment %} {{ form.as_p }} {% endcomment %}
+			{% csrf_token %}
 
 			<div class="slds-form-element">
 				<label class="slds-form-element__label" for="id_login">Email</label>
@@ -48,9 +47,8 @@
 					<input type="email" id="id_login" name="login" autofocus="autofocus" class="slds-input" required="" />
 				</div>
 			</div>
-
 			<div class="slds-form-element">
-				<label class="slds-form-element__label" for="id_password">Email</label>
+				<label class="slds-form-element__label" for="id_password">Password</label>
 				<div class="slds-form-element__control">
 					<input type="password" id="id_password" name="password" class="slds-input" required="" />
 				</div>
@@ -78,6 +76,7 @@
 				<br />
 				<a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
 			</div>
+
 		</form>
 	</div>
 </div>
