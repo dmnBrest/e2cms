@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
+{% load account %}
 {% block head %}
 	<script src="{% static 'vue/vue.min.js' %}"></script>
 {% endblock %}
 {% block content %}
 	<h1>HOME</h1>
+
+	A {% user_display user %}
 
 	<div>
 		{% verbatim %}

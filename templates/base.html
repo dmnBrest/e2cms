@@ -36,11 +36,11 @@
 			<div class="slds-col"></div>
 			<div class="slds-col c-right">
 				{% if user.is_authenticated %}
-					<p>Welcome {{ user.username }}</p>
-					<p><a href="/logout">Logout</a></p>
+					Welcome {{ user.username }}, <a href="{% url 'account_logout' %}">Logout</a>
 				{% else %}
-					<p><a href="/auth/login">Login</a></p>
-					<p><a href="/auth/register">Register</a></p>
+					<a href="{% url 'account_login' %}">Sign In</a>
+					&nbsp;
+					<a href="{% url 'account_signup' %}">Sign Up</a>
 				{% endif %}
 			</div>
 		</div>
@@ -50,7 +50,7 @@
 	</div>
     <div class="c-footer">
         {% block footer %}
-        &copy; Copyright 2017 by Dmitry Shnyrebv.
+        &copy; Copyright 2017 by Dmitry Shnyrev.
         {% endblock %}
     </div>
 </body>

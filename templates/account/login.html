@@ -1,0 +1,85 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+<div class="slds-size_1-of-3 c-panel" style="margin-top: 40px;">
+
+	<div class="c-panel-header">
+		{% trans "Sign In" %}
+	</div>
+	<div class="c-panel-body c-panel-body-padding">
+
+		{% get_providers as socialaccount_providers %}
+
+		{% if socialaccount_providers %}
+			<p>{% blocktrans with site.name as site_name %}Please sign in with one
+			of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+			for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+			<div class="socialaccount_ballot">
+
+				<ul class="socialaccount_providers">
+				{% include "socialaccount/snippets/provider_list.html" with process="login" %}
+				</ul>
+
+				<div class="login-or">{% trans 'or' %}</div>
+
+			</div>
+
+			{% include "socialaccount/snippets/login_extra.html" %}
+
+			<br />
+
+		{% endif %}
+
+		<form class="login" method="POST" action="{% url 'account_login' %}" class="slds-form slds-form_stacked">
+			{% csrf_token %}
+
+			{% comment %} {{ form.as_p }} {% endcomment %}
+
+			<div class="slds-form-element">
+				<label class="slds-form-element__label" for="id_login">Email</label>
+				<div class="slds-form-element__control">
+					<input type="email" id="id_login" name="login" autofocus="autofocus" class="slds-input" required="" />
+				</div>
+			</div>
+
+			<div class="slds-form-element">
+				<label class="slds-form-element__label" for="id_password">Email</label>
+				<div class="slds-form-element__control">
+					<input type="password" id="id_password" name="password" class="slds-input" required="" />
+				</div>
+			</div>
+			<br />
+			<div class="slds-form-element__control">
+				<span class="slds-checkbox">
+					<input type="checkbox" name="default" id="id-remember" name="remember" />
+					<label class="slds-checkbox__label" for="id-remember">
+						<span class="slds-checkbox_faux"></span>
+						<span class="slds-form-element__label">Remember Me</span>
+					</label>
+				</span>
+			</div>
+
+			{% if redirect_field_value %}
+			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+			{% endif %}
+
+			<div class="c-auth-primary-actions">
+				<button class="slds-button slds-button_brand" type="submit">{% trans "Sign In" %}</button>
+			</div>
+			<div class="c-auth-secondary-actions">
+				<a href="{{ signup_url }}">Sign Up</a>
+				<br />
+				<a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
