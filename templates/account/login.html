@@ -44,7 +44,7 @@
 			<div class="slds-form-element">
 				<label class="slds-form-element__label" for="id_login">Email</label>
 				<div class="slds-form-element__control">
-					<input type="email" id="id_login" name="login" autofocus="autofocus" class="slds-input" required="" />
+					<input type="email" id="id_login" name="login" autofocus="autofocus" class="slds-input" required="" value="{{ form.login.value | default:''}}" />
 				</div>
 			</div>
 			<div class="slds-form-element">
@@ -53,19 +53,29 @@
 					<input type="password" id="id_password" name="password" class="slds-input" required="" />
 				</div>
 			</div>
-			<br />
-			<div class="slds-form-element__control">
-				<span class="slds-checkbox">
-					<input type="checkbox" name="default" id="id-remember" name="remember" />
-					<label class="slds-checkbox__label" for="id-remember">
-						<span class="slds-checkbox_faux"></span>
-						<span class="slds-form-element__label">Remember Me</span>
-					</label>
-				</span>
+			<div class="slds-form-element">
+				<div class="slds-form-element__control">
+					<span class="slds-checkbox">
+						<input type="checkbox" name="default" id="id-remember" name="remember" />
+						<label class="slds-checkbox__label" for="id-remember">
+							<span class="slds-checkbox_faux"></span>
+							<span class="slds-form-element__label">Remember Me</span>
+						</label>
+					</span>
+				</div>
 			</div>
 
 			{% if redirect_field_value %}
 			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+			{% endif %}
+
+			{% if form.errors %}
+				{{ form.non_field_errors }}
+				{% for field in form %}
+					<div class="fieldWrapper">
+						{{ field.errors }}
+					</div>
+				{% endfor %}
 			{% endif %}
 
 			<div class="c-auth-primary-actions">

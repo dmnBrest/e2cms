@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+
+	<div class="slds-size_1-of-3 c-panel" style="margin-top: 40px;">
+
+		<div class="c-panel-header">
+			<h1>{% trans "Sign Out" %}</h1>
+		</div>
+
+		<div class="c-panel-body c-panel-body-padding">
+			<p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+			<form method="post" action="{% url 'account_logout' %}">
+				{% csrf_token %}
+				{% if redirect_field_value %}
+					<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+				{% endif %}
+				<br />
+				<button class="slds-button slds-button_brand" type="submit">{% trans 'Sign Out' %}</button>
+			</form>
+		</div>
+
+	</div>
+
+{% endblock %}
